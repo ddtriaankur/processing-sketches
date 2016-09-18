@@ -19,11 +19,13 @@ public class build extends PApplet {
 
 boolean record = false; 
 
-	Spot[] spots; // Declare array
+Spot[] spots; // Declare array
 public void setup() {
   
-  int numSpots = 70;                  // Number of objects
+
+  int numSpots = 140;                  // Number of objects
   int dia = width/numSpots;           // Calculate diameter
+
   spots = new Spot[numSpots];         // Create array
   for (int i = 0; i < spots.length; i++) {
     float x = dia/2 + i*dia;
@@ -35,13 +37,17 @@ public void setup() {
 }//
 
 public void draw() {
-  // if(record){
+  if(record){
     beginRecord(PDF, "filename-####.pdf");
-  // }
+  }
+  // background(0);
 
-  fill(0, 12);
+  // fill(0, 12);
+  fill(0,5);
   rect(0, 0, width, height);
-  fill(255);
+
+  // fill(255);
+  stroke(255);
   for (int i=0; i < spots.length; i++) {
     spots[i].move(); // Move each object
     spots[i].display(); // Display each object
@@ -79,7 +85,8 @@ class Spot {
   }
   
   public void display() {
-    ellipse(x, y, diameter, diameter);
+    point(x, y);
+    // ellipse(x, y, diameter, diameter);
   }
 }
   public void settings() {  size(700, 100); }

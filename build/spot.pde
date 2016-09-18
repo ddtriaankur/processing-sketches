@@ -20,6 +20,7 @@ class Spot {
   }
   
   void display() {
-    ellipse(x, y, diameter, diameter);
+    point(x, y);
+    // ellipse(x, y, diameter, diameter);
   }
 }
