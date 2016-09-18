@@ -1,0 +1,82 @@
+
+PVector
+https://processing.org/tutorials/pvector/
+
+...
+Print
+...
+Data
+...
+Two Dimensional Array
+...
+Render Techniques
+	P2D and P3D uses OpenGl
+	The visual quality if the OpenGL renderers can be adjusted with the smooth() & hint() functions
+	smooth(8); 	//2 is default :: 4 imporves the anti-aliasing quality
+
+	PGraphics :: built in processing's methods will be defined through the dot operator. 
+						:: Variable still belong to the main program
+
+	OpenGL surfaces 
+
+	clear() :: removes the background	and fills them with transparency			
+	tint()  ?? what are the blend options
+	blendMode(DimensionalRKEST);
+	blendMode(MULTIPLY);
+	blendMode(BLEND); //default blend mode
+
+...
+Typography
+...
+Arrays
+	set of data elements stored under the same name
+	created to hold any type of data
+	last position is length -1 
+
+	int[] x = {50, 61, 83, 69, 71, 50, 29, 31, 17, 39}   		//declare, create and assign
+
+	int[] data
+	data = new int[5]
+
+	data.length 		//give the length of the array
+
+	abs(sin(r))
+
+	Record data
+	Ring buffer 
+
+	Array funcitons
+		arrayCopy(north, south); // Copy from north array to>> south array
+		When an array is used as a param to a function, the address (location in memory) of the array is transferred into the function instead of the actual data. //aka Call by referrence.
+
+	Array of objects
+	
+	Enhanced for loop
+		for (<data type> s : <array-name>){
+			s.move();
+			s.display();
+		}
+	- each object in the array is in turn assigned to the variable s
+	- statement inside the loop run for each element of the array until the end
+
+	Two-dimensional Arrays
+		int [] [] x = {{50,0}, {61,20}, {83,51}, {71,9}};
+
+...
+Interactivity
+
+	mousePressed boolean variable
+	mouseButton == LEFT
+	mouseButton == RIGHT
+	mouseButton == CENTER
+
+	keyPressed boolean variable	
+	"key" store the single variable 
+		key == 'A' for char 
+	ASCII table defines the uppercase A as the number 65, and the digit 1 is defined as 49.
+
+	keyCode == UP :: variable stores ALT. CONTROL, SHIFT, UP, DOWN, LEFT and RIGHT keys as constant
+	key == CODED :: to check if key is CODED
+	Event
+...
+
