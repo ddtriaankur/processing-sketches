@@ -3,11 +3,8 @@ PVector
 https://processing.org/tutorials/pvector/
 
 ...
-Print
-...
 Data
-...
-Two Dimensional Array
+next
 ...
 Render Techniques
 	P2D and P3D uses OpenGl
@@ -26,8 +23,6 @@ Render Techniques
 	blendMode(BLEND); //default blend mode
 
 ...
-Typography
-...
 Arrays
 	set of data elements stored under the same name
 	created to hold any type of data
@@ -43,8 +38,12 @@ Arrays
 	abs(sin(r))
 
 	Record data
+		// the most recent 100 values from mouseY are stored & displayed on screen 
+		// read the array from the last
 	Ring buffer 
+		//The following example produces the same result as the previous one but uses a more efficient technique. Instead of shifting the array elements in each frame, the program writes the new data to the next available array position. The elements in the array remain in the same position once they are written, but they are read in a different order each frame. Reading begins at the location of the oldest data element and continues to the end of the array. At the end of the array, the % operator (p. 57) is used to wrap back to the beginning. This technique, commonly known as a ring buffer, is especially useful with larger arrays, to avoid unnecessary copying of data that can slow down a program.
 
+............................
 	Array funcitons
 		arrayCopy(north, south); // Copy from north array to>> south array
 		When an array is used as a param to a function, the address (location in memory) of the array is transferred into the function instead of the actual data. //aka Call by referrence.

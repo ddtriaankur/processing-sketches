@@ -15,38 +15,28 @@ import java.io.IOException;
 public class build extends PApplet {
 
 
-float yoff = 0;
-float t =0;
-PVector center, location;
+int[] y; 		//array to store the previous mouse positions
 
 public void setup() {
 	
-	background(10);	
-
-	center = new PVector(width/2, height/2);
+	y = new int[width]; 		//declaring the size of the array
 }
 
 public void draw() {
-	// clear();
-	location = new PVector(width/2, height/2 + yoff);
-	float dist = PVector.dist(center, location);
-	dist = map(dist, 0, height/2, 50,255);
-	stroke(200, dist);
-	strokeWeight(16);
-	point(location.x, location.y);
+	background(204);
 
-	t += 1;
-	yoff = noise(t) ;
-	yoff = map(yoff, 0,1, -height/2 , height/2);
+	for (int i = y.length-1; i > 0; i--) {
+		y[i] = y[i-1];
+	}
+	
+	y[0] = mouseY ; //ADD new values to the begining
 
-
-}
-
-public void mousePressed(){
-		background(10);	
+	for (int i = 1; i < y.length; ++i) {
+		line(i, y[i], i-1, y[i-1]);
+		// point(i, y[i]);
+	}
 
 }
-
   public void settings() { 	size(512, 512); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "build" };
