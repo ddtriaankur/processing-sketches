@@ -1,0 +1,38 @@
+
+11 Chapters   	Pg 343
+
+Preface
+		Computational Information Design
+		Chapter 1-4 can be understood by someone without any programming background.	
+		www.benfry.com/writing
+
+1 The Seven Stages of Visualizing Data	:: covers the process fro developing a useful viz, from acquiring data to interacting with it.
+		- Great viz never starts from the standpoint of the data set; it starts with ques.
+		- Why was the data collected, 
+		- what's interesting about it, and 
+		- what stroies can it tell?
+
+		- The more specific you can make your question, the more specific and clear the visual result will be.
+		- In short, a proper viz is a king of narrative, providing a clear answer to a ques without extraneous details.
+		- Understanding Data
+				- Acquire	- Parse - Filter - Mine - Represent - Refine - Interact 
+			- These steps can't be followed slavishly. Sometimes it will be 4 out of 7, & other all of them.
+
+	Principles
+		Each Project Has Unique Requirement
+				- Every problem is unique, so capitalize on that uniqueness to solve the problem.
+		Avoid the All-You-Can-Eat Buffet
+				- less details will actually convey more information 
+				- Just because it can be measured doesn't mean it should.
+				- Perhaps making things simple is worth bragging about, but making complex messes is not.
+				- Find the smallest amount of data that can still convey something meaningful about the contents of the data set.
+		Know Your Audience 
+				- In what way will your audience use the piece?
+		
+		We will tackle the problems of having too much data & having data that can change.
+
+Chapter 2
+	Getting Started with Processing
+		- 
+		- 
+		- 
