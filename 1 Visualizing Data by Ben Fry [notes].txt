@@ -1,4 +1,8 @@
+vitaly bulgarov - Black phoenix
 
+11 Days 
+
+1 DAY --
 11 Chapters   	Pg 343
 
 Preface
@@ -6,7 +10,7 @@ Preface
 		Chapter 1-4 can be understood by someone without any programming background.	
 		www.benfry.com/writing
 
-1 The Seven Stages of Visualizing Data	:: covers the process fro developing a useful viz, from acquiring data to interacting with it.
+1 The Seven Stages of Visualizing Data	:: covers the process from developing a useful viz, from acquiring data to interacting with it.
 		- Great viz never starts from the standpoint of the data set; it starts with ques.
 		- Why was the data collected, 
 		- what's interesting about it, and 
@@ -31,8 +35,72 @@ Preface
 		
 		We will tackle the problems of having too much data & having data that can change.
 
-Chapter 2
-	Getting Started with Processing
-		- 
-		- 
-		- 
+--- .....................................
+Chapter 2 Getting Started with Processing   19 - 30
+		- Exporting and Distributing Your Work
+			- File --> Export
+			- saveFrame("output-####.png");  //saving Images
+		- Examples and Refrence
+			- More About the size() Method
+
+		- Functions
+		- Sketching and Scripting 
+		- Ready?
+
+			- We'll cover how to integrate Java and Processing toward the end of the book.
+			- The language syntax, identical to Java but with a few modifications. The changes are laid out in detail toward the end of the book.
+							Tip
+								- Use External Editor in the Pref
+			- size(400,400, JAVA2D);  //default
+			- size(400, 400, P2D);
+			- size(400, 400, P3D);
+			- size(400, 400, OPENGL); 	
+				:: uses SUn's Java OpenGL lib for faster rednering
+				:: import library --> OpenGL 
+			- size(400, 400, PDF, "filename-####.pdf");
+				:: import the PDF lib
+				:: cousin of the Java2D renderer
+						- P2D and P3D are great for pixel-based work, while JAVA2D and PDF settings will give you the highest quality. 
+		- Loading and Displaying Data
+			- loadImage() and loadStrings() functions each xpect to find a file inside a folder named data, which is a subdir of the sketch folder
+			- loadStrings() reads a text file into an array of String objects, and
+			- loadImage() reads an image into a PImage object, the container for image data in Processing. Code Example
+				- String[] lines = loadStrings("something.txt");
+				- PImage[] img = loadImage("picture.jpg");
+			- Sketch --> Show sketch folder  ::view the contents of the sketch folder
+				>> String[] lines = loadStrings("http://benfry.com/writing/map/locations.tsv") ;	//also use full path names to local files. or URL
+				>> String[] lines = loadStrings ("https://raw.githubusercontent.com/ddtriaankur/processing-sketches/master/notes.txt");
+
+				>> PImage image = loadImage("http://benfry,com/writing/map.png");
+
+		Functions	
+			- Acquire
+					loadStrings(), loadBytes() 
+			- Parse
+					split()
+			- Filter
+					for(), if (item[i].startsWith())
+			- Mine
+					min(), max(), abs()
+			- Represent
+					map(), beginShape(), endShape()
+			- Refine
+					fill(), strokeWeight(), smooth()
+			- Interact
+					mouseMoved(), mouseDragged(), keyPressed()
+
+		Libraries Add New Features
+			- import processing.xml.*;
+				- XMLElement xml = new XMLElement(this, "sites.xml") ;
+			- The "this" object is used because it lets the library make use of the core API functions to draw to the screen or load files.
+		Don't Start by Trying to Build a Cathedral
+			- Of course, once things are working, avoid the urge to rewrite for its own sake.
+			- A rewrite should be used when addressing a completely different problem.
+
+--- .....................................
+Day 2 
+Chapter 3 Mapping		31 - 53 Pg
+			- Drawing a Map
+			- Location on a Map
+			- Data on a Map
+			- Using Your Own Data
