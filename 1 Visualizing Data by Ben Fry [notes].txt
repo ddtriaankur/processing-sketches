@@ -100,7 +100,90 @@ Chapter 2 Getting Started with Processing   19 - 30
 --- .....................................
 Day 2 
 Chapter 3 Mapping		31 - 53 Pg
-			- Drawing a Map
-			- Location on a Map
-			- Data on a Map
-			- Using Your Own Data
+			Drawing a Map
+				- US Map :: http://benfry.com/writing/map/map.png
+				- loadImage("map.png");
+			Locations on a Map
+					- File containing the coordinates for the center of each state - 
+							http://benfry.com/writing/map/locations.tsv
+					- Code to read the location data file 
+							http://benfry.com/writing/map/Table.pde
+					- Table class reads a file as a grid of rows and columns.
+							table.getFloat(row, column);
+			Data on a Map
+				- Random Data - http://benfry.com/writing/map/random.tsv
+				- Minimum & Maximum values for the data is important because that range will need to be mapped to other features (such as size or color) for display.
+				- Using 0 instead of MIN_FLOAT and MAX_FLOAT where the values are negative
+				- The norm() function maps values from a user-specified range to a normalized range between 0.0 and 1.0
+				- The percentage value is a percentage of where value lies in the range from dataMin to dataMax.
+					>> float percentage = norm(value, dataMin, dataMax);
+				- the lerp() function converts a normalized
+					- norm() & lerp() together make up the map() funciton 
+					- lerpColor() function interpolates between two colors.
+						>> color between = lerpColor (color1, color2, percentage);  
+				- To make the colors interpolate between red and blue for low and high values, 
+						>> color between = lerpColor(#296F34, #61E2F0, percentage);
+						>> fill(between);
+				- This illustrates the problem with interpolating between two inrelated colros.
+				- Use HSB to preserve the saturation & brightness of colors, 
+						>> color between = lerpColor(#296F34, #61E2F0, percent, HSB);
+			Two Sided Data Ranges				
+				- use separate colors for positive or negative 
+				- Positive value are remapped from 0 through the max value into a value between 3 to 30 for the diameter of the ellipse.
+				- Positive values are drawn with blue ellipses and negatives with red
+			Provide More Information with a Mouse Rollover (Interact)	
+				- include the font file in the data folder
+					>> PFont font = loadFont("filename.fnt") ;
+					>> textFont(font);
+				- loadFont() should be used only inside setup() 
+				- use dist() function to calc if its within the radius
+				- ellipseMode(RADIUS) cause default ellipseMode is DIAMETER
+				- Additional file to the full state name 
+					- http://benfry.com/writing/map/names.tsv
+				- Table nameTable; 
+				- nameTable = new Table("names.tsv");
+			Updating Values over Time (Acquire, Mine)
+				- One problem with changing data is that the min and max values need to stay fixed. You will need to figure out the absolute values for each because recalculating dataMin and dataMax each time 
+				- setFloat() overwrites the old value from the data table with the new random value.
+				- nf() is used to format numbers for printings
+				- nf(value, 0, 2)  	//allow any number of digits to the left of the decimal and two to the right
+				- the name for nf() is intentionally terse (if a bit cryptic)
+				- nfp() requires each number to be shaown with a + or - sign
+					- “North Dakota 6.15234534” into “North Dakota +6.15”, which is far more readable
+				- nfs() pads values with spaces
+			Smooth Interpolation of Values over Time (Refine)
+				- updating data, showing users the transition over time 
+				- Interpolating between values 
+				- Your data value never "equal" to some number, rather they're always "becoming" or "transitioning to" another value.
+ 				- Integrator class is used for this.
+					- http://benfry.com/writing/map/Integrator.pde
+				- Integrator changingNumber = new Integrator(4);
+				- changinNumber.target(-2);
+				- Call the update() method to see the change
+					- changingNumber.update();
+				- The integrator has a value field that always holds its current value.
+					- strokeWeight(changingNumber.value); 
+				- Integrator[] interpolators; 	//array of object
+					- rowCount = locationTable.getRowCount();		//get the array size
+			//Setup: load init values into the Integrator
+						- interpolators = new Integrator[rowCount];  //define array size
+						- for (){
+								initVal = dataTable.getFloat(i,1)
+								interpolators[i] = new Integrator(initVal); 
+							}
+				- interpolators[i].target(newValue);
+				- frameRate(30);
+				- As integrator class uses math for simple physics. 
+				- The target value is the resting length of the spring.
+				- Default dampning is 0.5 and the attraction is 0.2 
+				- interpolators[i] = new Integrator(intiVal, 0.9, 0.1); 	//low dampning makes it bouncy
+		Using Your Own Data Pg 51
+					- replace random.tsv to use your own file 
+				- Taking Data from the User 
+					
+		NEXT STEPS- 
+					- we learned the basics of reading, displaying and interacting with a data set.
+					- Follow chapters delve into more sophisticated aspects of each,
+					- buil on the basic skill picked up here.
+
+Need to GiVe chapter 2 another revision
