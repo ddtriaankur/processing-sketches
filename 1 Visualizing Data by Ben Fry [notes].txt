@@ -1,4 +1,6 @@
 vitaly bulgarov - Black phoenix
+http://benfry.com/writing/archives/3
+Tacit knowledge
 
 11 Days 
 
@@ -186,4 +188,55 @@ Chapter 3 Mapping		31 - 53 Pg
 					- Follow chapters delve into more sophisticated aspects of each,
 					- buil on the basic skill picked up here.
 
-Need to GiVe chapter 2 another revision
+Need to GiVE chapter 2 another revision
+
+Chapter 4 Time Series
+
+			Labeling the Current Data Set (Refing and Interact)
+					- createFont ("SansSerif", 20);  	//bulit in type face Serif, SansSerif, Monospaced, Dialog and DialogInput;
+					- textFont(plotFont);
+					- createFont() is smooth at any size unlike font used with loadFont() which may be distorted
+						- supports ttf otf file formats
+					- PFont.list()
+			Drawing Axis Labels (Refine)	
+					- General rule of thumb for porper interval : five intervals is at low end and more than ten is likely a problem
+				Year Labels
+					- add the yearInterval variable to the begining of the code before setup():
+					- int yearInterval = 10
+					- Use modulo % to divide year in equal parts  
+				Labeling Volume on the Vertical Axis	
+					- int volumeInterval = 10;
+					- ceil() rounds a float up to hte next int value
+					- set dataMax to the rounded value multiplued by volumeInterval
+					- floor() removes decimals from the number
+					- use nf() method if decimal points is need to be included
+					- str() converts float to a string
+					- pg 67 talks about ticks Major and Small ones
+				Bringing it All Together and Tilting Both Axes
+					- 
+					- 69 - 71 pages
+
+			Choosing a Proper Representation (Represent and Refine)
+					- beginShape() //endShape()
+					- vertex() method adds a single point to the shape
+					- 
+					- 
+			Using Rollovers to Hightlight Points (Interact)
+					- 
+					- 
+			Ways to Connect Points (Refine)   Pg 77
+					- 
+					- 
+			Text Labels As Tabbed Panes (Interact)
+					- 
+					- 
+				Drawing Tabs Instead of a Single Title	
+				Handling Mouse Input
+				Better Tab Images (Refine)	
+					- 
+			Interpolation Between Data Sets (Interact)		
+					- 
+					- 
+			End of the Series 
+					- 
+					- 
