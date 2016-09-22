@@ -188,47 +188,74 @@ Chapter 3 Mapping		31 - 53 Pg
 					- Follow chapters delve into more sophisticated aspects of each,
 					- buil on the basic skill picked up here.
 
-Need to GiVE chapter 2 another revision
+Need to GIVE chapter 2 another revision
 
 Chapter 4 Time Series
-
-			Labeling the Current Data Set (Refing and Interact)
-					- createFont ("SansSerif", 20);  	//bulit in type face Serif, SansSerif, Monospaced, Dialog and DialogInput;
-					- textFont(plotFont);
-					- createFont() is smooth at any size unlike font used with loadFont() which may be distorted
-						- supports ttf otf file formats
-					- PFont.list()
-			Drawing Axis Labels (Refine)	
-					- General rule of thumb for porper interval : five intervals is at low end and more than ten is likely a problem
+				- Time Series hlep to measure feature over a period of time
+			We cover
+							- Acquiring data from a text file
+							- Parsing contents of the file into a usable structure
+							- Calculating boundaries of the data
+							- Finding a suitable representation and consideration alternatives
+							- Refining the representation  
+							- Interactivity with the data 
+			Milk, Tea & Coffee - Acquire and Parse		
+					- Modified version of Table class is used to read this file::
+							- http://benfry.com/writing/series/FloatTable.pde 
+			Clearing the Table - Filter & Mine				
+					- FloatTable class has methods for calculating min and max for the rows and columns 
+						>> FloatTable data = new FloatTable("filename.tsv");
+						:: getColumnMax :: getColumnMin
+					- isValid() //only consider valid data elements 
+					- getRowNames() method returns a String array 
+					- int() converts String into int 
+						- years = int(data.getRowNames());
+			A Simple Plot - Represent and Refine 				pg 56
+					- set Boundaries, defines the corners of the plot
+						:: plotX1, plotY1, plotX2 & plotY2
+					- rectMode(CORNERS); 
+					- float x = map(row, 0, rowCount-1, plotX1, plotX2)
+			Labeling the Current Data Set 	//Refing and Interact
+					-> createFont("SansSerif", 20);  	
+							//bulit in type face Serif, SansSerif, Monospaced, Dialog and DialogInput
+					-> textFont(plotFont);
+					-> createFont() is smooth at any size unlike font used with loadFont() which may be distorted
+						- ttf otf are supports formats
+					- PFont.list(); 
+							//lists installed fonts on your system
+			Drawing Axis Labels //Refine	
+					- General rule of thumb for porper interval 
+							:: 5 intervals is at low end & more than 10 is likely a problem
 				Year Labels
-					- add the yearInterval variable to the begining of the code before setup():
-					- int yearInterval = 10
+					- add the yearInterval variable
+						-> int yearInterval = 10
 					- Use modulo % to divide year in equal parts  
+					- textAlign(); 		
+							//sets the vertical alignment of the text
+							//TOP, BOTTOM, CENTER and BASELINE(the default)
 				Labeling Volume on the Vertical Axis	
 					- int volumeInterval = 10;
-					- ceil() rounds a float up to hte next int value
-					- set dataMax to the rounded value multiplued by volumeInterval
-					- floor() removes decimals from the number
+					- ceil() 		//rounds a float up to the next int value
+					- set dataMax to the rounded value multiplied by volumeInterval
+							:: dataMax = ceil(data.getTableMax()/volumeInterval) * volumeInterval;
+					- floor() 			//floors the decimal values
+					- text() method can draw int or float values
 					- use nf() method if decimal points is need to be included
-					- str() converts float to a string
-					- pg 67 talks about ticks Major and Small ones
+					- str() converts float to a string  //oppo of int()
+							:: String.valueOf() in JAVA
 				Bringing it All Together and Tilting Both Axes
-					- 
+*******		- to be read *************************************************************************************
 					- 69 - 71 pages
 
 			Choosing a Proper Representation (Represent and Refine)
 					- beginShape() //endShape()
 					- vertex() method adds a single point to the shape
 					- 
-					- 
-			Using Rollovers to Hightlight Points (Interact)
-					- 
+			Using Rollovers to Hightlight Points(Interact)
 					- 
 			Ways to Connect Points (Refine)   Pg 77
 					- 
-					- 
 			Text Labels As Tabbed Panes (Interact)
-					- 
 					- 
 				Drawing Tabs Instead of a Single Title	
 				Handling Mouse Input
@@ -236,7 +263,86 @@ Chapter 4 Time Series
 					- 
 			Interpolation Between Data Sets (Interact)		
 					- 
-					- 
 			End of the Series 
 					- 
-					- 
+
+Chapter 5. Connections and Correlations	
+				Changing Data Sources
+				Problem Statement
+				Preprocessing
+				Using the Preprocessed Data(Acquire, Parse, Filter, Mine)
+				Displaying the Results(Represent)
+				Returning to the Question(Refine)
+				Sophisticated Sorting: Using Salary As a Tiebreaker(Mine)
+				Moving to Multiple Days(Interact)
+				Smoothing Out the Interaction(Refine)
+				Deployment Considerations(Acquire, Parse, Filter)
+
+Chapter	6. Scatterplot Maps
+				Preprocessing
+				Loading the Data(Acquire and Parse)
+				Drawing a Scaterplot of Zip Codes(Mine and Represent)
+				Highlighting Points While Typing(Refine and Interact)
+				Show the Currently Selected Point(Refine)
+				Progressively Dimming and Brightening Points(Refine)
+				Zoomin In(Interact) 
+				Changing How Points Are Drwan When Zooming (Refine)
+				Deployment Issues(Acquire and Refine)
+				Next Steps
+
+Chapter	7. Trees, Hierarchies and Recursion
+				Using Recursion to Build a Directory Tree
+				Using a Queue to Load Asynchronously(Interact)
+				An Introduciton to Treemaps
+				Which Files Are Using the Most Space?
+				Viewing Folder Contents(Interact)
+				Improving the Treemap Display(Refine)
+				Flying Through Files(Interact)
+				Next Steps
+
+Chapter	8. Networks and Graphs			
+				Simple Graph Demo
+				A More Complicated Graph
+				Approaching Networking Problems
+				Advanced Graph Example
+				Mining Additional Information
+
+Chapter	9. Acquiring Data
+				Where to Find Data 
+				Tools for Acquiring Daata from the Internet
+				Locaiton Files for Use with Processing
+				Loading Text Data
+				Dealing with Files and Folders
+				Listing Files in a Folder
+				Asynchronus Image Downloads			
+				Using openStream() As a Bridge to Java
+				Dealing with Byte Arrays
+				Advanced Web Techniques
+				Using a Database
+				Dealing with a Large Number of Files
+
+Chapter	10. Parsing Data
+				Levels of Effort 
+				Tools for Gathering Clues
+				Text Is Best
+				Text Markup Languages
+				Regular Expressions
+				Grammars and BNF Notation
+				Compressed Data
+				Vectors and Geometry
+				Binary Data Formats
+				Advanced Detective Work
+
+Chapter 11. Integrating Processing with Java
+				Programming Modes
+				Additional Source Files(Tabs)
+				The Preprocesor
+				API Structure
+				Embedding PApplet into Java Applications
+				Using Java Code in a Processing Sketch
+				Using Libraries
+				Building with the Source for processing.core
+
+
+
+

@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream; 
 import java.io.IOException; 
 
-public class build extends PApplet {
+public class mathFlower extends PApplet {
 
 
 PVector target;
@@ -37,7 +37,7 @@ public void draw() {
 	target.x = r* cos(theta);
 	target.y = r* sin(theta*4);
 	point(target.x, target.y);
-	
+
 	theta += 0.021725f;
 	// radius += 0.03;
 }
@@ -49,7 +49,7 @@ public void mousePressed(){
 }
   public void settings() { 	size(600, 600); 	smooth(); }
   static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "build" };
+    String[] appletArgs = new String[] { "mathFlower" };
     if (passedArgs != null) {
       PApplet.main(concat(appletArgs, passedArgs));
     } else {

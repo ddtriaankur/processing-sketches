@@ -21,7 +21,7 @@ void draw() {
 	target.x = r* cos(theta);
 	target.y = r* sin(theta*4);
 	point(target.x, target.y);
-	
+
 	theta += 0.021725;
 	// radius += 0.03;
 }
