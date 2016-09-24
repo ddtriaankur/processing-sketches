@@ -1,11 +1,7 @@
 vitaly bulgarov - Black phoenix
 http://benfry.com/writing/archives/3
-Tacit knowledge
+Tacit Knowledge
 .
-11 Days 
-
-1 DAY --
-11 Chapters   	Pg 343
 
 Preface
 		Computational Information Design
@@ -100,7 +96,6 @@ Chapter 2 Getting Started with Processing   19 - 30
 			- A rewrite should be used when addressing a completely different problem.
 
 --- .....................................
-Day 2 
 Chapter 3 Mapping		31 - 53 Pg
 			Drawing a Map
 				- US Map :: http://benfry.com/writing/map/map.png
@@ -243,30 +238,101 @@ Chapter 4 Time Series
 					- use nf() method if decimal points is need to be included
 					- str() converts float to a string  //oppo of int()
 							:: String.valueOf() in JAVA
-				Bringing it All Together and Tilting Both Axes
-*******		- to be read *************************************************************************************
-					- 69 - 71 pages
-
-			Choosing a Proper Representation (Represent and Refine)
-					- beginShape() //endShape()
-					- vertex() method adds a single point to the shape
-					- 
-			Using Rollovers to Hightlight Points(Interact)
-					- 
-			Ways to Connect Points (Refine)   Pg 77
-					- 
+				Bringing it All Together & Tilting Both Axes
+					- textAlign(CENTER, CENTER)
+					- textWidth() 		//textAscent()
+				Choosing a Proper Representation //Represent & Refine
+					- beginShape() 		//endShape(CLOSE)
+						- vertex() 			//method adds points to the shape
+						- curveVertex() //can be used with ::curveTightness()
+				Using Rollovers to Hightlight Points //Interact
+					- highligh points when the mouse is nearby
+				Ways to Connect Points (Refine)   Pg 77
+					- curveVertex() atleast four points are necessary 
+						- because the first and last coordinates() are used to guide the angle at which the curve begins and ends
 			Text Labels As Tabbed Panes (Interact)
 					- 
+					- ***********************************************************
 				Drawing Tabs Instead of a Single Title	
+					- 
 				Handling Mouse Input
+					- 
 				Better Tab Images (Refine)	
 					- 
-			Interpolation Between Data Sets (Interact)		
-					- 
-			End of the Series 
-					- 
 
-Chapter 5. Connections and Correlations	
+			Interpolation Between Data Sets (Interact)		
+					- chapter 3 used Integrator class to interpolate b/w values in a data set. 
+					- First, declare the array of Integrator objects beforesetup()
+							- Integrator[] interpolators;
+					- Inside setup(), create each Integrator and set its initial value:
+							- interpolators = new Integrator[rowCount]; //initiated
+							- //assigned
+					- In draw(), each Integrator is uploaded:
+							- for( int row=0; row <rowCount; row++){
+									interpolators[row].update();
+								}
+					- replace data.getFloat(row, col) with::
+							- float value = interpolators[row].value ;
+					- finally set each Integrator to target the value
+							- interpolators[row].target(data.getFloat(row, col) );
+			End of the Series 
+				- Processing or Java Devs might want to make this code into a class name TimeSeries
+				- Classes are useful means for encapsulating data sets.
+				- This book is intends to teach you the starting point for drawing basic representations, and then goes on to show how they can be manipulated in a more sphisticated manner than can be done with standard tools.
+
+
+Chapter	6. Scatterplot Maps// 					145 - 180 Pg
+				Preprocessing
+				Loading the Data 	//Acquire & Parse
+				Drawing a Scaterplot of Zip Codes 	//Mine & Represent
+				Highlighting Points While Typing 		//Refine & Interact
+				Show the Currently Selected Point 	//Refine
+				Progressively Dimming and Brightening Points 	//Refine
+				Zoomin In 		//Interact 
+				Changing How Points Are Drwan When Zooming 		//Refine
+				Deployment Issues 		//Acquire & Refine
+				Next Steps
+
+Chapter	8. Networks and Graphs	
+						- a graph is a collection of elements, usually called nodes,
+						- linked together by edges(sometimes called braches)		
+						- common structure for mapping connections of many related elements
+				Simple Graph Demo
+					- use expand() instead of Java's ArrayList or Vector classes because
+						- arrays are more runtime speed-efficient
+						- this is imp for dealing with thousands of nodes
+					- The relax() methods calculate the placement of each node & lengths for each edge
+					- Handled by a kind of toy physics simulation, known as force-directed layout
+					- In a force-directed layout	
+						- edges act like springs that have a target length //also called their rest length
+					- The process applying the forces is called relaxation
+				Interacting with Nodes
+					- **************************************************** 
+					- 
+					- mag() function
+							- The magnitude of the vector is the disctance between the coordinate(0,0) and the vector's (x,y) coordinates.
+							- mag() is equivalent to dist(0, 0, x, y), //mag is more efficient
+							- relax() method compares this node against all the others to make sure none are too close to one another
+								- If they are,a slight offset (dx and dy) is added
+							- update() method updates the node positions by constraining dx and dy so that they don't exceed five pixels in either direction and then adding that value to x and y 
+							- The x and y coords are also constrained to make sure they stay within the drawing area:
+				A More Complicated Graph 						229
+						- Acquire
+						- Parse
+							- splitTokens() method is usefull for splitting a String along one of many delimiters
+							- split() method makes a break whenever a delimiter is seen,
+								- it is useful when breaking up fixed-width data 
+							- whereas splitTokens() is helpful when dealing with a messier range of delimiters
+						- Filter
+							- return ; 			//will end the function
+						- MINE  231    
+							- 
+							- 
+				Approaching Networking Problems 		240
+				Advanced Graph Example 							242
+				Mining Additional Information 			262
+
+Chapter 5. Connections and Correlations				94 - 133 Pg
 				Changing Data Sources
 				Problem Statement
 				Preprocessing
@@ -278,18 +344,6 @@ Chapter 5. Connections and Correlations
 				Smoothing Out the Interaction(Refine)
 				Deployment Considerations(Acquire, Parse, Filter)
 
-Chapter	6. Scatterplot Maps
-				Preprocessing
-				Loading the Data(Acquire and Parse)
-				Drawing a Scaterplot of Zip Codes(Mine and Represent)
-				Highlighting Points While Typing(Refine and Interact)
-				Show the Currently Selected Point(Refine)
-				Progressively Dimming and Brightening Points(Refine)
-				Zoomin In(Interact) 
-				Changing How Points Are Drwan When Zooming (Refine)
-				Deployment Issues(Acquire and Refine)
-				Next Steps
-
 Chapter	7. Trees, Hierarchies and Recursion
 				Using Recursion to Build a Directory Tree
 				Using a Queue to Load Asynchronously(Interact)
@@ -300,12 +354,6 @@ Chapter	7. Trees, Hierarchies and Recursion
 				Flying Through Files(Interact)
 				Next Steps
 
-Chapter	8. Networks and Graphs			
-				Simple Graph Demo
-				A More Complicated Graph
-				Approaching Networking Problems
-				Advanced Graph Example
-				Mining Additional Information
 
 Chapter	9. Acquiring Data
 				Where to Find Data 
@@ -342,7 +390,3 @@ Chapter 11. Integrating Processing with Java
 				Using Java Code in a Processing Sketch
 				Using Libraries
 				Building with the Source for processing.core
-
-
-
-

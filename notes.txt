@@ -4,7 +4,17 @@ https://processing.org/tutorials/pvector/
 
 ...
 Data
-next
+			Manipulating Strings
+			Splitting and Joining Strings
+	Reading and Writing Text Files
+			- loadStrings() 	::is used to read the content of the file into an String array.
+			- the individual lines of text in the file each become an individual element in the array.
+			- 
+			- 
+
+	Tabular Data
+	XML Data
+		
 ...
 Render Techniques
 	P2D and P3D uses OpenGl
