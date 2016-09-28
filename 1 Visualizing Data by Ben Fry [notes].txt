@@ -324,12 +324,40 @@ Chapter	8. Networks and Graphs
 								- it is useful when breaking up fixed-width data 
 							- whereas splitTokens() is helpful when dealing with a messier range of delimiters
 						- Filter
-							- return ; 			//will end the function
-						- MINE  231    
+							->> return; 			//will end the function
+						- MINE 
 							- 
-							- 
+						- Represent & Refine
+							- title of the nodes will be visible whenever the text is large enough to fit
+						- Saving an Image in a Vector Format
+							- if(key = 'r')
+							- only the command after beginRecord() are echoed to the file, non of the settings will be inherited
+							- see refrences/libraries for examples that handle writing SVG format and others
+						- Checking Our Work     238 Pg
 				Approaching Networking Problems 		240
-				Advanced Graph Example 							242
+							- Graphs have a tendency of amking a data set look sophisticateed and important, without having solved the problem of enlighting the viewer.
+						Some techniques for coping with graph data	
+								- Always return to your original question
+								- Consider the representation. What is the minimum amount of information that can be used to convey your purpose?
+								- What's interesting about the data?
+								- Try multiple diagrams
+								- Figure out how to group the information.
+								- Introduce hierarchy to avoid a sea of anonymous data.
+								- Is the information time based? 
+								- Even without clustering, interaction can be used to allow the user to explore the data.
+						Consider the Six Degrees of Kevin Bacon game			
+						The Oracle of Bacon -> oracleofbacon.org
+				Advanced Graph Example 							242 ********************** this
+					Obtaining a Web Server LogFile  //Acquire
+					Reading Apache Logfiles 	//Parse
+					A Look at the Other Source Files					
+					Moving from Processing to Java **
+					Reading and Cleaning the Data 	//Acquire, Parse, Filter
+					Bringing It All Together 	//Mine and Represent
+					Depicting Branches and Nodes 		//Represent and Refine
+					Playing with Data 		//Interact
+					Drawing Node Names 		//Represent and Refine
+					Drawing Visitor Paths 	//Represent and Refine
 				Mining Additional Information 			262
 
 Chapter 5. Connections and Correlations				94 - 133 Pg
@@ -356,29 +384,77 @@ Chapter	7. Trees, Hierarchies and Recursion
 
 
 Chapter	9. Acquiring Data
-				Where to Find Data 
-				Tools for Acquiring Daata from the Internet
-				Locaiton Files for Use with Processing
-				Loading Text Data
+				Where to Find Data 		//Pg 265 
+				Tools for Acquiring Data from the Internet
+					Wget and cURL
+					NcFTP and Links
+				Location Files for Use with Processing 		//Pg 268
+					The Data Folder
+					URL
+					Absolute Path to a Local File
+					Specifying Output Locations
+				Loading Text Data 		//Pg 270
+					Files Too Large for loadStrings()
+					Reading Files Progressively 
+						- BufferedReader : to read a few lines on each iteration through the draw() method
+					>> BufferReader reader;
+						reader = createReader("xyz.log");
+							String line = reader.readLine();
+						- on each trip through draw(), a new line is read, and the readLine() method will return null if the file is finished 	
+		[NOTE]Reading Files Asynchronously with a Thread	
+					Parsing Large Files As They Are Acquired
 				Dealing with Files and Folders
+					Using the Java File Object to Locate Files
 				Listing Files in a Folder
-				Asynchronus Image Downloads			
-				Using openStream() As a Bridge to Java
+				Asynchronus Image Downloads			//Pg 280
+					- like the other file loading functions, loadImage() halts execution until it has completed
+					- loading images inside setup can negatively impact startup time for a sketch
+					- we can instead rely on Java methods for retrieving the image data.
+						:: the ImageLoader class is designed to handle this situation
+						example	code :: ImageLoader.java
+						>> 	ImageLoader loader;
+								loader = new ImageLoader();
+								String path = dataPath(name);
+								imageList[i] = loader.addFile(path);
+						- that would queue all 104 images to be loaded and then set them to download.		
+						- This makes for a more efficient download through the use of threading, but doesn't solve the startup problem
+								import java.awt.*; 
+								import java.awt.image.*; 
+								import java.net.URL; 
+								import processing.core.*;
+						- The ImageLoader class provides basic functions for creating images in the PImage structure required by Processing.
+						- Once the image download is complete, the finish() method copies the image data from the Java Image objects to the PImage objects.
+						- That is handled inside PImage because attributes such as width and height wont't be available until the download is complete.
+						- The ImageLoader methods for creating images just wrap standard Java classes within PImage classes so Processing can use the images. 
+				Using openStream() As a Bridge to Java 
 				Dealing with Byte Arrays
 				Advanced Web Techniques
 				Using a Database
+					Performance Aspects of Databases in Interactive Applications
 				Dealing with a Large Number of Files
 
 Chapter	10. Parsing Data
-				Levels of Effort 
+						- generally data boils down to lists 1-D, matrices 2D, or trees and graphs
+				Levels of Effort 		Pg 296
+					Batik SVG Parser
+					Anecdote****
+						- In short the perception of ugliness can often lead to nonessential tasks that take you down long, unproductive paths and lead you astray from the priorities of your project.
 				Tools for Gathering Clues
 				Text Is Best
+					TSV //Tab Separated Values 
+					CSV //Comma Separated Values
 				Text Markup Languages
+					HTML
+					XML
+					JSON 	Pg 315
 				Regular Expressions
 				Grammars and BNF Notation
 				Compressed Data
 				Vectors and Geometry
+					SVG 	Pg 320
+					OBJ and AutoCAD DXF	
 				Binary Data Formats
+					XLS Excel Spreadsheets
 				Advanced Detective Work
 
 Chapter 11. Integrating Processing with Java

@@ -7,12 +7,67 @@ Data
 			Manipulating Strings
 			Splitting and Joining Strings
 	Reading and Writing Text Files
-			- loadStrings() 	::is used to read the content of the file into an String array.
+			- loadStrings() 	::is used to read the content of the file into an String array
 			- the individual lines of text in the file each become an individual element in the array.
-			- 
-			- 
+			- saveString(); //writes text back to a data file
+				- writes an array of string to a file, one line per string 
+				- String words = "apple bear cat dog";	
+					String[] list = split(words, '');
+					// Writes the strings to a file, each on a separate line
+					saveStrings("file.txt", list);
+			Continuously append to a file over time		
+			- PrintWriter class		
+								PrintWriter output;
 
+								void setup() {
+								  // Create a new file in the sketch directory
+								  output = createWriter("positions.txt"); 
+								}
+
+								void draw() {
+								  point(mouseX, mouseY);
+								  output.println(mouseX);  // Write the coordinate to the file
+								}
+
+								void keyPressed() {
+								  output.flush();  // Writes the remaining data to the file
+								  output.close();  // Finishes the file
+								  exit();  // Stops the program
+								}
+		
 	Tabular Data
+			- Processing includes a Table class which will load a CSV or TSV file and automatically parse the data into columns and rows for you.
+			- Instead of saying
+				>> String[] stuff = loadStrings("data.csv");		
+				>> Table tab = loadTable("data.csv", header);
+			- Processing can automatically interpret and store the headers for you, if "header" option is passed
+				- link:: http://processing.org/reference/loadTable_.html 	
+			Getting the Data
+					- int val1 = table.getInt(2, 1);
+					- float val2 = table.getFloat(3, 2);
+					- String s = table.getString(0,3);
+			- Accessing each piece of data by the column name
+					- TableRow row = table.getRow(2); 
+				- Table object refers to the entire table of data while
+				- a TableRow object handles an individual row of data within the Table.  
+				- we can ask for data from some or all of the columns
+					- int x = row.getInt("x")
+					- int y = row.getInt("y")
+					- fload d = row.getFloat("diameter")
+			- row() is used to grab all the rows and iterate over them
+				- for(TableRow <name> : table.rows() ){
+						float x = row.getFloat("x");
+						float y = row.getFloat("y");
+						float d = row.getFloat("diameter");
+						String n = row.getString("name");
+						// Do something with the data of each row
+					}
+			- findRows() and matchRows()
+			- setInt(), setFloat() and setString()
+			- addRow(), removeRow(0)
+			- For an example that creates objects from and saves objects to a Table,
+				- take a look at LoadSaveTable under Topics --> Advanced Data
+
 	XML Data
 		
 ...
